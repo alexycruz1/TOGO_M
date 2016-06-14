@@ -12,43 +12,17 @@ import java.util.ArrayList;
  * @author Alexy jr
  */
 public class Vertice {
-    
-    private int x;
-    private int y;
-    private int q;
     private String nombre;
     private int numero_serie;
     private Lista aristas = new Lista();
-    private int area[];
 
-    public Vertice(int x, int y, int q, String nombre, Lista aristas, int[] area, int numero_serie) {
+    public Vertice(String nombre, Lista aristas,int numero_serie) {
         this.nombre = nombre;
         this.aristas = aristas;
-        this.area = area;
         this.numero_serie = numero_serie;
     }
 
     public Vertice() {
-    }
-    
-
-    public int getQ() {
-        return q;
-    }
-
-    public void setQ(int q) {
-        this.q = q;
-    }
-
-    public int[] getArea() {
-        return area;
-    }
-
-    public void setArea(int x1, int x2, int y1, int y2) {
-        this.area[0] = x1;
-        this.area[1] = x2;
-        this.area[2] = y1;
-        this.area[3] = y2;
     }
 
     public String getNombre() {
@@ -81,27 +55,6 @@ public class Vertice {
 
     public void deleteArista(int pos) {
         aristas.erase(pos);
-    }
-
-    public void setLocation(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
     }
 
     public boolean hasArista() {

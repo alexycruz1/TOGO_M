@@ -5,21 +5,9 @@
  */
 package togo;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.Point;
-import java.awt.Polygon;
-import java.awt.Shape;
-import java.awt.Toolkit;
-import java.awt.geom.AffineTransform;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.util.Random;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
+import com.mxgraph.swing.mxGraphComponent;
+import com.mxgraph.view.mxGraph;
+import java.awt.FlowLayout;
 import javax.swing.JOptionPane;
 
 /**
@@ -49,6 +37,7 @@ public class TOGO extends javax.swing.JFrame {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         jd_mapa = new javax.swing.JDialog();
+        jp_mapa = new javax.swing.JPanel();
         jd_modificar_eliminar_rc = new javax.swing.JDialog();
         cb_routers_modificar = new javax.swing.JComboBox();
         jButton4 = new javax.swing.JButton();
@@ -83,15 +72,34 @@ public class TOGO extends javax.swing.JFrame {
         jmi_p = new javax.swing.JMenuItem();
         jmi_m = new javax.swing.JMenuItem();
 
+        jd_mapa.setResizable(false);
+
+        javax.swing.GroupLayout jp_mapaLayout = new javax.swing.GroupLayout(jp_mapa);
+        jp_mapa.setLayout(jp_mapaLayout);
+        jp_mapaLayout.setHorizontalGroup(
+            jp_mapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 551, Short.MAX_VALUE)
+        );
+        jp_mapaLayout.setVerticalGroup(
+            jp_mapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 429, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jd_mapaLayout = new javax.swing.GroupLayout(jd_mapa.getContentPane());
         jd_mapa.getContentPane().setLayout(jd_mapaLayout);
         jd_mapaLayout.setHorizontalGroup(
             jd_mapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 571, Short.MAX_VALUE)
+            .addGroup(jd_mapaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jp_mapa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jd_mapaLayout.setVerticalGroup(
             jd_mapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 451, Short.MAX_VALUE)
+            .addGroup(jd_mapaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jp_mapa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jButton4.setText("Eliminar");
@@ -311,8 +319,8 @@ public class TOGO extends javax.swing.JFrame {
                 .addGap(40, 40, 40)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cb_vertices1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cb_vertices1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cb_vertices2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -339,29 +347,6 @@ public class TOGO extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
-        /*int[] area = new int[4];
-         int[] area2 = new int[4];
-         Lista aristas =  new Lista();
-         Vertice prueba = new Vertice(0, 0, 0, "Nombre", aristas, area);
-         Vertice prueba2 = new Vertice(0, 0, 0, "Nombre2", aristas, area2);
-         Arista a = new Arista(prueba2, 20, 30);
-         prueba.addArista(a);
-         aristas.push_back(a);
-        
-         Red.addVertice(prueba);
-         Red.addVertice(prueba2);
-        
-         Toolkit tk = Toolkit.getDefaultToolkit();
-         int x = (int) tk.getScreenSize().getWidth();
-         int y = (int) tk.getScreenSize().getHeight();
-         */
-
-        //Toolkit tk = Toolkit.getDefaultToolkit();
-        //int x = (int) tk.getScreenSize().getWidth();
-        //int y = (int) tk.getScreenSize().getHeight();
-        //menu1.setVisible(false);
-        //image_mapa.setLocation(x / 23, y / 9);
-        //drawGraph();
         Red.print();
     }//GEN-LAST:event_jButton1MouseClicked
 
@@ -370,9 +355,8 @@ public class TOGO extends javax.swing.JFrame {
         String nombre = cb_tipo_router.getSelectedItem().toString();
         int numero_serie = Integer.parseInt(tf_num_serie.getText());
         Lista temp = new Lista();
-        int area[] = new int[4];
 
-        Vertice v = new Vertice(0, 0, 0, nombre, temp, area, numero_serie);
+        Vertice v = new Vertice(nombre, temp, numero_serie);
         Red.addVertice(v);
         vertices_temp.push_back(v);
 
@@ -407,6 +391,8 @@ public class TOGO extends javax.swing.JFrame {
 
                 aristas_temp.push_back(a);
                 aristas_temp.push_back(b);
+
+                DrawEdge(temp1, temp2, Longitud_cable);
             } else {
                 JOptionPane.showMessageDialog(this, "Hubo un error al establecer la conexion",
                         "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -421,6 +407,8 @@ public class TOGO extends javax.swing.JFrame {
 
                 aristas_temp.push_back(a);
                 aristas_temp.push_back(b);
+
+                DrawEdge(temp1, temp2, Longitud_cable);
             } else {
                 JOptionPane.showMessageDialog(this, "Hubo un error al establecer la conexion",
                         "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -434,13 +422,15 @@ public class TOGO extends javax.swing.JFrame {
 
     private void jmi_mapaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_mapaActionPerformed
         // TODO add your handling code here:
-
+        CrearGrafo();
+        
         jd_mapa.setModal(true);
         jd_mapa.pack();
         jd_mapa.setLocationRelativeTo(this);
         jd_mapa.setVisible(true);
 
-        drawGraph();
+        //drawGraph();
+
     }//GEN-LAST:event_jmi_mapaActionPerformed
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
@@ -452,11 +442,11 @@ public class TOGO extends javax.swing.JFrame {
         cb_routers_modificar.removeAllItems();
         cb_vertices1.removeAllItems();
         cb_vertices2.removeAllItems();
-        
+
         for (int i = 0; i < vertices_temp.size(); i++) {
-            cb_routers_modificar.addItem(((Vertice)(vertices_temp.at(i))));
-            cb_vertices1.addItem(((Vertice)(vertices_temp.at(i))));
-            cb_vertices1.addItem(((Vertice)(vertices_temp.at(i))));
+            cb_routers_modificar.addItem(((Vertice) (vertices_temp.at(i))));
+            cb_vertices1.addItem(((Vertice) (vertices_temp.at(i))));
+            cb_vertices1.addItem(((Vertice) (vertices_temp.at(i))));
         }
     }//GEN-LAST:event_jButton4MouseClicked
 
@@ -465,23 +455,23 @@ public class TOGO extends javax.swing.JFrame {
         int pos = cb_routers_modificar.getSelectedIndex();
         String nombre = cb_tipo_r_modificar.getSelectedItem().toString();
         int num_serie = Integer.parseInt(tf_num_serie_modificar.getText());
-        
-        ((Vertice)Red.getVertices().at(pos)).setNombre(nombre);
-        ((Vertice)Red.getVertices().at(pos)).setNumero_serie(num_serie);
-        
-        ((Vertice)vertices_temp.at(pos)).setNombre(nombre);
-        ((Vertice)vertices_temp.at(pos)).setNumero_serie(num_serie);
-        
+
+        ((Vertice) Red.getVertices().at(pos)).setNombre(nombre);
+        ((Vertice) Red.getVertices().at(pos)).setNumero_serie(num_serie);
+
+        ((Vertice) vertices_temp.at(pos)).setNombre(nombre);
+        ((Vertice) vertices_temp.at(pos)).setNumero_serie(num_serie);
+
         cb_routers_modificar.removeAllItems();
         cb_vertices1.removeAllItems();
         cb_vertices2.removeAllItems();
-        
+
         for (int i = 0; i < vertices_temp.size(); i++) {
-            cb_routers_modificar.addItem(((Vertice)(vertices_temp.at(i))));
-            cb_vertices1.addItem(((Vertice)(vertices_temp.at(i))));
-            cb_vertices1.addItem(((Vertice)(vertices_temp.at(i))));
+            cb_routers_modificar.addItem(((Vertice) (vertices_temp.at(i))));
+            cb_vertices1.addItem(((Vertice) (vertices_temp.at(i))));
+            cb_vertices1.addItem(((Vertice) (vertices_temp.at(i))));
         }
-        
+
         tf_num_serie_modificar.setText("");
     }//GEN-LAST:event_jButton5MouseClicked
 
@@ -528,94 +518,33 @@ public class TOGO extends javax.swing.JFrame {
         });
     }
 
-    public void drawGraph() {
-        try {
-            int conteo = 0;
-            Redes = ImageIO.read(new File("./src/Imagenes/negro.png"));
-            Graphics2D g = Redes.createGraphics();
-            BufferedImage temp = null;
-            Vertice v = null;
+    public void DrawEdge(Vertice v1, Vertice v2, int peso) {
+        graph.getModel().beginUpdate();
+        String nombre1 = v1.getNombre();
+        String nombre2 = v2.getNombre();
 
-            for (int i = 0; i < Red.getVertices().size(); i++) {
-                temp = ImageIO.read(new File("./src/Imagenes/router.png"));
-                v = ((Vertice) Red.getVertices().at(i));
-
-                g.setColor(Color.WHITE);
-                g.setFont(new Font("SansSerif", Font.BOLD, 12));
-                if (conteo == 0) {
-                    g.drawImage(temp, null, 150, 25);
-                    Redes.setRGB(150 + temp.getWidth() / 2, 25 + temp.getHeight() / 2, Color.WHITE.getRGB());
-                    v.setArea(150, 150 + temp.getWidth(), 25, 25 + temp.getHeight());
-                    g.drawString(v.getNombre(), 150 - 20, 20);
-                    v.setLocation(150 + temp.getWidth() / 2, 25 + temp.getHeight() / 2);
-                }
-            }
-
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-        drawLines();
+        Object arista1 = graph.insertVertex(parent, null, nombre1, x, y, 50, 50);
+        x+=200;
+        y+=200;
+        Object arista2 = graph.insertVertex(parent, null, nombre2, x, y, 50, 50);
+        
+        graph.insertEdge(parent, null, peso, arista1, arista2);
+        graph.insertEdge(parent, null, peso, arista2,arista1); 
+        
+        graph.insertEdge(parent, null, 2, central_siempre, arista1);
+        graph.insertEdge(parent, null, 2, arista1, central_siempre);
+        
+        graph.insertEdge(parent, null, 2, central_siempre, arista2);
+        graph.insertEdge(parent, null, 2, arista2, central_siempre);
     }
 
-    public void drawLines() {
-        Graphics2D g = Redes.createGraphics();
-        g.setFont(new Font("SansSerif", Font.BOLD, 18));
-        for (int i = 0; i < Red.getVertices().size(); i++) {
-            for (int j = 0; j < ((Vertice) Red.getVertices().at(i)).getAristas().size(); j++) {
-                g.setColor(Color.WHITE);
-                g.drawLine(((Vertice) Red.getVertices().at(i)).getX(), ((Vertice) Red.getVertices().at(i)).getY(), ((Arista) ((Vertice) Red.getVertices().at(i)).getAristas().at(j)).getDestino().getX(), ((Arista) ((Vertice) Red.getVertices().at(i)).getAristas().at(j)).getDestino().getY());
-                int nx = (((Vertice) Red.getVertices().at(i)).getX() + ((Arista) ((Vertice) Red.getVertices().at(i)).getAristas().at(j)).getDestino().getX()) / 2;
-                int ny = (((Vertice) Red.getVertices().at(i)).getY() + ((Arista) ((Vertice) Red.getVertices().at(i)).getAristas().at(j)).getDestino().getY()) / 2;
-                g.setColor(Color.ORANGE);
-                if (((Vertice) Red.getVertices().at(i)).getX() > ((Arista) ((Vertice) Red.getVertices().at(i)).getAristas().at(j)).getDestino().getX() && ((Vertice) Red.getVertices().at(i)).getY() > ((Arista) ((Vertice) Red.getVertices().at(i)).getAristas().at(j)).getDestino().getY()) {
-                    g.setColor(Color.BLUE);
-                    g.drawString(((Arista) ((Vertice) Red.getVertices().at(i)).getAristas().at(j)).getLongitud() + "", nx + 10, ny - 3);
-                    g.fill(createArrowShape(new Point(((Vertice) Red.getVertices().at(i)).getX(), ((Vertice) Red.getVertices().at(i)).getY()), new Point(((Arista) ((Vertice) Red.getVertices().at(i)).getAristas().at(j)).getDestino().getX(), ((Arista) ((Vertice) Red.getVertices().at(i)).getAristas().at(j)).getDestino().getY())));
-                } else if (((Vertice) Red.getVertices().at(i)).getX() < ((Arista) ((Vertice) Red.getVertices().at(i)).getAristas().at(j)).getDestino().getX() && ((Vertice) Red.getVertices().at(i)).getY() > ((Arista) ((Vertice) Red.getVertices().at(i)).getAristas().at(j)).getDestino().getY()) {
-                    g.setColor(Color.GREEN);
-                    g.drawString(((Arista) ((Vertice) Red.getVertices().at(i)).getAristas().at(j)).getLongitud() + "", nx + 10, ny + 23);
-                    g.fill(createArrowShape(new Point(((Vertice) Red.getVertices().at(i)).getX(), ((Vertice) Red.getVertices().at(i)).getY()), new Point(((Arista) ((Vertice) Red.getVertices().at(i)).getAristas().at(j)).getDestino().getX(), ((Arista) ((Vertice) Red.getVertices().at(i)).getAristas().at(j)).getDestino().getY())));
-                } else if (((Vertice) Red.getVertices().at(i)).getX() > ((Arista) ((Vertice) Red.getVertices().at(i)).getAristas().at(j)).getDestino().getX() && ((Vertice) Red.getVertices().at(i)).getY() < ((Arista) ((Vertice) Red.getVertices().at(i)).getAristas().at(j)).getDestino().getY()) {
-                    g.setColor(Color.RED);
-                    g.drawString(((Arista) ((Vertice) Red.getVertices().at(i)).getAristas().at(j)).getLongitud() + "", nx - 15, ny - 5);
-                    g.fill(createArrowShape(new Point(((Vertice) Red.getVertices().at(i)).getX(), ((Vertice) Red.getVertices().at(i)).getY()), new Point(((Arista) ((Vertice) Red.getVertices().at(i)).getAristas().at(j)).getDestino().getX(), ((Arista) ((Vertice) Red.getVertices().at(i)).getAristas().at(j)).getDestino().getY())));
-                } else {
-                    g.setColor(Color.ORANGE);
-                    g.drawString(((Arista) ((Vertice) Red.getVertices().at(i)).getAristas().at(j)).getLongitud() + "", nx + 5, ny - 10);
-                    g.fill(createArrowShape(new Point(((Vertice) Red.getVertices().at(i)).getX(), ((Vertice) Red.getVertices().at(i)).getY()), new Point(((Arista) ((Vertice) Red.getVertices().at(i)).getAristas().at(j)).getDestino().getX(), ((Arista) ((Vertice) Red.getVertices().at(i)).getAristas().at(j)).getDestino().getY())));
-                }
-            }
-        }
+    public void CrearGrafo() {
+        graph.insertVertex(parent, null, "", 500, 500, 0, 0);
+        graph.getModel().endUpdate();
+        jp_mapa.add(cmp);
+        jp_mapa.setLayout(new FlowLayout());
     }
 
-    public static Shape createArrowShape(Point fromPt, Point toPt) {
-        Polygon arrowPolygon = new Polygon();
-        arrowPolygon.addPoint(-6, 1);
-        arrowPolygon.addPoint(3, 1);
-        arrowPolygon.addPoint(3, 3);
-        arrowPolygon.addPoint(6, 0);
-        arrowPolygon.addPoint(3, -3);
-        arrowPolygon.addPoint(3, -1);
-        arrowPolygon.addPoint(-6, -1);
-
-        Point midPoint = midpoint(fromPt, toPt);
-
-        double rotate = Math.atan2(toPt.y - fromPt.y, toPt.x - fromPt.x);
-
-        AffineTransform transform = new AffineTransform();
-        transform.translate(midPoint.x, midPoint.y);
-        double ptDistance = fromPt.distance(toPt);
-        double scale = ptDistance / 60.0; // 12 because it's the length of the arrow polygon.
-        transform.scale(scale, scale);
-        transform.rotate(rotate);
-
-        return transform.createTransformedShape(arrowPolygon);
-    }
-
-    private static Point midpoint(Point p1, Point p2) {
-        return new Point((int) ((p1.x + p2.x) / 2.0),
-                (int) ((p1.y + p2.y) / 2.0));
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
@@ -647,6 +576,7 @@ public class TOGO extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmi_modificar_eliminar;
     private javax.swing.JMenuItem jmi_p;
     private javax.swing.JMenuItem jmi_r;
+    private javax.swing.JPanel jp_mapa;
     private javax.swing.JRadioButton rb_cable_cobre;
     private javax.swing.JRadioButton rb_cable_fibra;
     private javax.swing.JTextField tf_ancho_banda;
@@ -655,11 +585,16 @@ public class TOGO extends javax.swing.JFrame {
     private javax.swing.JTextField tf_num_serie_modificar;
     // End of variables declaration//GEN-END:variables
     Grafo Red;
-    BufferedImage Redes;
     Lista aristas_temp = new Lista();
     Lista vertices_temp = new Lista();
     Lista aristas_centrales = new Lista();
+    Vertice central = new Vertice("Router Central", aristas_centrales, 1);
+    
+    int y = 0;
+    int x = 0;
 
-    int[] area = new int[4];
-    Vertice central = new Vertice(0, 0, 0, "Router Central", aristas_centrales, area, 1);
+    mxGraph graph = new mxGraph();
+    mxGraphComponent cmp = new mxGraphComponent(graph);
+    Object parent = graph.getDefaultParent();
+    Object central_siempre = graph.insertVertex(parent, null, central, 200, 200, 50, 50);
 }

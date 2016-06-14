@@ -12,7 +12,7 @@ package togo;
 public class Arista {
     private Vertice destino;
     private int Longitud;
-    private int banda;
+    private int banda;  
 
     public Arista(Vertice destino, int Longitud, int banda) {
         this.destino = destino;
