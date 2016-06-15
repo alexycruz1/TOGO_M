@@ -156,4 +156,62 @@ public class Grafo {
             return enl_rec;
         }
     }
+    
+    /*-----------------------------------------------------------------------------------------------*/
+    
+    public long[][] AlgPrim(long[][] Matriz) {  
+        boolean[] marcados = new boolean[vertices.size()]; 
+        String vertice = ((Vertice)vertices.at(0)).getNombre(); 
+        return AlgPrim(Matriz, marcados, vertice, new long[Matriz.length][Matriz.length]); 
+    }                                                                                     
+                                                                                          
+    private long[][] AlgPrim(long[][] Matriz, boolean[] marcados, String vertice, long[][] Final) {
+        for (int i = 0; i < vertices.size(); i++) {
+            if ((((Vertice)vertices.at(i)).getNombre()).equals(vertice)) {
+                marcados[i] = true;
+            }
+        }
+        long aux = -1;
+        if (!TodosMarcados(marcados)) { 
+            for (int i = 0; i < marcados.length; i++) { 
+                if (marcados[i]) {
+                    for (int j = 0; j < Matriz.length; j++) {
+                        if (Matriz[i][j] != 0) {        
+                            if (!marcados[j]) {         
+                                if (aux == -1) {        
+                                    aux = Matriz[i][j];
+                                } else {
+                                    aux = Math.min(aux, Matriz[i][j]); 
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
+            for (int i = 0; i < marcados.length; i++) {
+                if (marcados[i]) {
+                    for (int j = 0; j < Matriz.length; j++) {
+                        if (Matriz[i][j] == aux) {
+                            if (!marcados[j]) { 
+                                Final[i][j] = aux; 
+                                Final[j][i] = aux;
+                                return AlgPrim(Matriz, marcados, ((Vertice)vertices.at(j)).getNombre(), Final); 
+                                                                                               
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return Final;
+    }
+    public boolean TodosMarcados(boolean[] vertice) { 
+        for (boolean b : vertice) {
+            if (!b) {
+                return b;
+            }
+        }
+        return true;
+    }
 }

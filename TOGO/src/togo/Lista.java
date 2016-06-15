@@ -101,6 +101,28 @@ public class Lista {
             return 0;
         }
     }
+    
+    public int IndexOf(Object value) {
+        Node temp = head;
+        int cont = 0;
+        boolean esta = false;
+        boolean salir = false;
+        while (!salir) {
+            if ((temp.getValue()) == value) {
+                salir = true;
+                esta = true;
+            } else {
+                temp = temp.getNext();
+                cont++;
+            }
+        }
+
+        if (esta) {
+            return cont;
+        } else {
+            return 0;
+        }
+    }
 
     public int size() {
         int cont = 0;

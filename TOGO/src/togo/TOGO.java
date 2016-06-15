@@ -23,6 +23,7 @@ public class TOGO extends javax.swing.JFrame {
      */
     public TOGO() {
         initComponents();
+        setLocationRelativeTo(this);
         //this.setExtendedState(MAXIMIZED_BOTH);
         Red = new Grafo();
         Red.addVertice(central);
@@ -55,6 +56,9 @@ public class TOGO extends javax.swing.JFrame {
         jd_mapa_analisis2 = new javax.swing.JDialog();
         jScrollPane1 = new javax.swing.JScrollPane();
         jta_floyd = new javax.swing.JTextArea();
+        jd_mapa_analisis3 = new javax.swing.JDialog();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jta_prim = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -232,6 +236,27 @@ public class TOGO extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jta_prim.setColumns(20);
+        jta_prim.setRows(5);
+        jScrollPane2.setViewportView(jta_prim);
+
+        javax.swing.GroupLayout jd_mapa_analisis3Layout = new javax.swing.GroupLayout(jd_mapa_analisis3.getContentPane());
+        jd_mapa_analisis3.getContentPane().setLayout(jd_mapa_analisis3Layout);
+        jd_mapa_analisis3Layout.setHorizontalGroup(
+            jd_mapa_analisis3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_mapa_analisis3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jd_mapa_analisis3Layout.setVerticalGroup(
+            jd_mapa_analisis3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_mapa_analisis3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(102, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jButton1.setText("PRUEBAS");
@@ -277,7 +302,6 @@ public class TOGO extends javax.swing.JFrame {
 
         jm_archivo.setText("Archivo");
 
-        jmi_mapa.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_MASK));
         jmi_mapa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/map-icon.gif"))); // NOI18N
         jmi_mapa.setText("Ver mapa");
         jmi_mapa.addActionListener(new java.awt.event.ActionListener() {
@@ -300,7 +324,6 @@ public class TOGO extends javax.swing.JFrame {
 
         jm_analisis.setText("Analisis");
 
-        jmi_r.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_MASK));
         jmi_r.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/router2.jpg"))); // NOI18N
         jmi_r.setText("Router a router");
         jmi_r.addActionListener(new java.awt.event.ActionListener() {
@@ -310,7 +333,6 @@ public class TOGO extends javax.swing.JFrame {
         });
         jm_analisis.add(jmi_r);
 
-        jmi_p.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
         jmi_p.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ancho_banda.gif"))); // NOI18N
         jmi_p.setText("Probar ancho de banda");
         jmi_p.addActionListener(new java.awt.event.ActionListener() {
@@ -320,9 +342,13 @@ public class TOGO extends javax.swing.JFrame {
         });
         jm_analisis.add(jmi_p);
 
-        jmi_m.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_MASK));
         jmi_m.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cables.png"))); // NOI18N
         jmi_m.setText("Minima cantidad de cable");
+        jmi_m.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_mActionPerformed(evt);
+            }
+        });
         jm_analisis.add(jmi_m);
 
         jMenuBar1.add(jm_analisis);
@@ -652,6 +678,31 @@ public class TOGO extends javax.swing.JFrame {
         jd_mapa_analisis2.setVisible(true);
     }//GEN-LAST:event_jmi_pActionPerformed
 
+    private void jmi_mActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_mActionPerformed
+        // TODO add your handling code here:
+        
+        
+        long[][] matriz_temp = Red.AlgPrim(Red.generarMatrizAdyacencia());
+        String matriz_vertices = "\n";
+        for (int i = 0; i < matriz_temp.length; i++) {
+            for (int j = 0; j < matriz_temp.length; j++) {
+                if (matriz_temp[i][j] == 0) {
+                    matriz_vertices += "[NULL]";
+                } else {
+                    matriz_vertices += "[" + matriz_temp[i][j] + "]";
+                }
+            }
+            matriz_vertices += "\n";
+        }
+        
+        jta_prim.setText(matriz_vertices);
+        
+        jd_mapa_analisis3.setModal(true);
+        jd_mapa_analisis3.pack();
+        jd_mapa_analisis3.setLocationRelativeTo(this);
+        jd_mapa_analisis3.setVisible(true);
+    }//GEN-LAST:event_jmi_mActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -835,11 +886,13 @@ public class TOGO extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JDialog jd_mapa;
     private javax.swing.JDialog jd_mapa_analisis1;
     private javax.swing.JDialog jd_mapa_analisis2;
+    private javax.swing.JDialog jd_mapa_analisis3;
     private javax.swing.JDialog jd_modificar_eliminar_rc;
     private javax.swing.JMenu jm_analisis;
     private javax.swing.JMenu jm_archivo;
@@ -851,6 +904,7 @@ public class TOGO extends javax.swing.JFrame {
     private javax.swing.JPanel jp_mapa;
     private javax.swing.JPanel jp_mapa_analisis1;
     private javax.swing.JTextArea jta_floyd;
+    private javax.swing.JTextArea jta_prim;
     private javax.swing.JRadioButton rb_cable_cobre;
     private javax.swing.JRadioButton rb_cable_fibra;
     private javax.swing.JTextField tf_ancho_banda;
