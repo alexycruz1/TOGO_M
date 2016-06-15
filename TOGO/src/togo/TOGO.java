@@ -50,18 +50,18 @@ public class TOGO extends javax.swing.JFrame {
         cb_tipo_r_modificar = new javax.swing.JComboBox();
         jLabel7 = new javax.swing.JLabel();
         tf_num_serie_modificar = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
         jd_mapa_analisis1 = new javax.swing.JDialog();
         jp_mapa_analisis1 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
         jd_mapa_analisis2 = new javax.swing.JDialog();
         jScrollPane1 = new javax.swing.JScrollPane();
         jta_floyd = new javax.swing.JTextArea();
+        jLabel10 = new javax.swing.JLabel();
         jd_mapa_analisis3 = new javax.swing.JDialog();
         jScrollPane2 = new javax.swing.JScrollPane();
         jta_prim = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         cb_tipo_router = new javax.swing.JComboBox();
         cb_vertices1 = new javax.swing.JComboBox();
         cb_vertices2 = new javax.swing.JComboBox();
@@ -77,6 +77,9 @@ public class TOGO extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         tf_num_serie = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
+        buttonTask1 = new org.edisoncor.gui.button.ButtonTask();
+        buttonTask2 = new org.edisoncor.gui.button.ButtonTask();
+        jLabel8 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jm_archivo = new javax.swing.JMenu();
         jmi_mapa = new javax.swing.JMenuItem();
@@ -121,12 +124,17 @@ public class TOGO extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jd_modificar_eliminar_rc.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jd_modificar_eliminar_rc.getContentPane().add(cb_routers_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 63, 282, -1));
+
         jButton4.setText("Eliminar");
         jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton4MouseClicked(evt);
             }
         });
+        jd_modificar_eliminar_rc.getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 62, 144, -1));
 
         jButton5.setText("Cambiar a");
         jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -134,48 +142,18 @@ public class TOGO extends javax.swing.JFrame {
                 jButton5MouseClicked(evt);
             }
         });
+        jd_modificar_eliminar_rc.getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 112, 144, -1));
 
         cb_tipo_r_modificar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Repetidor de red domestica", "Repetidor de red empresarial", "Antena celular", "Conexion dedicada" }));
+        jd_modificar_eliminar_rc.getContentPane().add(cb_tipo_r_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 113, 282, -1));
 
+        jLabel7.setForeground(new java.awt.Color(240, 240, 240));
         jLabel7.setText("Numero de serie");
+        jd_modificar_eliminar_rc.getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, -1, -1));
+        jd_modificar_eliminar_rc.getContentPane().add(tf_num_serie_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(266, 153, 119, -1));
 
-        javax.swing.GroupLayout jd_modificar_eliminar_rcLayout = new javax.swing.GroupLayout(jd_modificar_eliminar_rc.getContentPane());
-        jd_modificar_eliminar_rc.getContentPane().setLayout(jd_modificar_eliminar_rcLayout);
-        jd_modificar_eliminar_rcLayout.setHorizontalGroup(
-            jd_modificar_eliminar_rcLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jd_modificar_eliminar_rcLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(jd_modificar_eliminar_rcLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(jd_modificar_eliminar_rcLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jd_modificar_eliminar_rcLayout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tf_num_serie_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 81, Short.MAX_VALUE))
-                    .addComponent(cb_routers_modificar, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cb_tipo_r_modificar, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        jd_modificar_eliminar_rcLayout.setVerticalGroup(
-            jd_modificar_eliminar_rcLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jd_modificar_eliminar_rcLayout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addGroup(jd_modificar_eliminar_rcLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cb_routers_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4))
-                .addGap(27, 27, 27)
-                .addGroup(jd_modificar_eliminar_rcLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5)
-                    .addComponent(cb_tipo_r_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jd_modificar_eliminar_rcLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(tf_num_serie_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(178, Short.MAX_VALUE))
-        );
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dark-blue-texture-wallpaper-wide.jpg"))); // NOI18N
+        jd_modificar_eliminar_rc.getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 350));
 
         jd_mapa_analisis1.addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
@@ -215,26 +193,16 @@ public class TOGO extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jd_mapa_analisis2.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jta_floyd.setColumns(20);
         jta_floyd.setRows(5);
         jScrollPane1.setViewportView(jta_floyd);
 
-        javax.swing.GroupLayout jd_mapa_analisis2Layout = new javax.swing.GroupLayout(jd_mapa_analisis2.getContentPane());
-        jd_mapa_analisis2.getContentPane().setLayout(jd_mapa_analisis2Layout);
-        jd_mapa_analisis2Layout.setHorizontalGroup(
-            jd_mapa_analisis2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jd_mapa_analisis2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jd_mapa_analisis2Layout.setVerticalGroup(
-            jd_mapa_analisis2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jd_mapa_analisis2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        jd_mapa_analisis2.getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 380, 278));
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dark-blue-texture-wallpaper-wide.jpg"))); // NOI18N
+        jd_mapa_analisis2.getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
 
         jta_prim.setColumns(20);
         jta_prim.setRows(5);
@@ -258,6 +226,9 @@ public class TOGO extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("TOGO MAPPER ©");
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setText("PRUEBAS");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -265,40 +236,79 @@ public class TOGO extends javax.swing.JFrame {
                 jButton1MouseClicked(evt);
             }
         });
-
-        jButton2.setText("Añadir router ");
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
-            }
-        });
-
-        jButton3.setText("Añadir conexion");
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton3MouseClicked(evt);
-            }
-        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(496, 404, -1, -1));
 
         cb_tipo_router.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Repetidor de red domestica", "Repetidor de red empresarial", "Antena celular", "Conexion dedicada" }));
+        getContentPane().add(cb_tipo_router, new org.netbeans.lib.awtextra.AbsoluteConstraints(271, 49, 200, -1));
 
+        getContentPane().add(cb_vertices1, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 242, 251, -1));
+
+        getContentPane().add(cb_vertices2, new org.netbeans.lib.awtextra.AbsoluteConstraints(308, 242, 264, -1));
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 598, 10));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(240, 240, 240));
         jLabel1.setText("ROUTERS");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(258, 19, -1, -1));
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(240, 240, 240));
         jLabel2.setText("CONEXIONES");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 210, -1, -1));
 
+        jLabel3.setForeground(new java.awt.Color(240, 240, 240));
         jLabel3.setText("Longitud de cable");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(46, 283, -1, -1));
+        getContentPane().add(tf_longitud_cable, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 280, 102, -1));
 
+        jLabel4.setForeground(new java.awt.Color(240, 240, 240));
         jLabel4.setText("Ancho de banda");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 280, -1, -1));
+        getContentPane().add(tf_ancho_banda, new org.netbeans.lib.awtextra.AbsoluteConstraints(459, 281, 91, -1));
 
         buttonGroup1.add(rb_cable_cobre);
+        rb_cable_cobre.setForeground(new java.awt.Color(240, 240, 240));
         rb_cable_cobre.setText("Cable de cobre");
+        getContentPane().add(rb_cable_cobre, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 280, -1, -1));
 
         buttonGroup1.add(rb_cable_fibra);
+        rb_cable_fibra.setForeground(new java.awt.Color(240, 240, 240));
         rb_cable_fibra.setText("Cable de fibra");
+        getContentPane().add(rb_cable_fibra, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 310, -1, -1));
 
+        jLabel5.setForeground(new java.awt.Color(240, 240, 240));
         jLabel5.setText("Numero de serie");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 90, -1, -1));
+        getContentPane().add(tf_num_serie, new org.netbeans.lib.awtextra.AbsoluteConstraints(359, 89, 112, -1));
 
+        jLabel6.setForeground(new java.awt.Color(240, 240, 240));
         jLabel6.setText("MB/S");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 280, -1, -1));
+
+        buttonTask1.setForeground(new java.awt.Color(240, 240, 240));
+        buttonTask1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/add-icon.png"))); // NOI18N
+        buttonTask1.setText("Añadir router");
+        buttonTask1.setDescription("Crea un router para TOGO");
+        buttonTask1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonTask1MouseClicked(evt);
+            }
+        });
+        getContentPane().add(buttonTask1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 250, -1));
+
+        buttonTask2.setForeground(new java.awt.Color(240, 240, 240));
+        buttonTask2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/add-icon.png"))); // NOI18N
+        buttonTask2.setText("Añadir conexion");
+        buttonTask2.setDescription("Conecta dos routers");
+        buttonTask2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonTask2MouseClicked(evt);
+            }
+        });
+        getContentPane().add(buttonTask2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 350, -1, -1));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dark-blue-texture-wallpaper-wide.jpg"))); // NOI18N
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 440));
 
         jm_archivo.setText("Archivo");
 
@@ -355,103 +365,6 @@ public class TOGO extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addComponent(tf_longitud_cable, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rb_cable_fibra)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(rb_cable_cobre)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tf_ancho_banda, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel6)))
-                .addContainerGap())
-            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(248, 248, 248)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(196, 196, 196)
-                        .addComponent(jButton3))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(258, 258, 258)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(134, 134, 134)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(tf_num_serie))
-                            .addComponent(cb_tipo_router, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(127, 127, 127))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(39, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(cb_vertices1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(cb_vertices2, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(25, 25, 25))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jLabel1)
-                .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(cb_tipo_router, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(tf_num_serie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(51, 51, 51)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cb_vertices1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cb_vertices2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel3)
-                        .addComponent(tf_longitud_cable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(tf_ancho_banda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(rb_cable_cobre)
-                            .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(rb_cable_fibra)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
-                .addComponent(jButton3)
-                .addGap(44, 44, 44)
-                .addComponent(jButton1)
-                .addContainerGap())
-        );
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -459,84 +372,6 @@ public class TOGO extends javax.swing.JFrame {
         // TODO add your handling code here:
         Red.print();
     }//GEN-LAST:event_jButton1MouseClicked
-
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        // TODO add your handling code here:
-        String nombre = cb_tipo_router.getSelectedItem().toString();
-        int numero_serie = Integer.parseInt(tf_num_serie.getText());
-        Lista temp = new Lista();
-
-        Vertice v = new Vertice(nombre, temp, numero_serie);
-        Red.addVertice(v);
-        vertices_temp.push_back(v);
-
-        cb_vertices1.addItem(v);
-        cb_vertices2.addItem(v);
-        cb_routers_modificar.addItem(v);
-
-        tf_num_serie.setText("");
-    }//GEN-LAST:event_jButton2MouseClicked
-
-    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-        // TODO add your handling code here:
-        Vertice temp1 = ((Vertice) cb_vertices1.getSelectedItem());
-        Vertice temp2 = ((Vertice) cb_vertices2.getSelectedItem());
-
-        int Ancho_banda = Integer.parseInt(tf_ancho_banda.getText());
-        int Longitud_cable = Integer.parseInt(tf_longitud_cable.getText());
-
-        if (rb_cable_cobre.isSelected()) {
-            if (Ancho_banda > 0 && Ancho_banda <= 100) {
-                Arista a = new Arista(temp1, temp2, Longitud_cable, Ancho_banda);
-                Arista b = new Arista(temp2, temp1, Longitud_cable, Ancho_banda);
-
-                temp1.addArista(b);
-                temp2.addArista(a);
-
-                aristas_temp.push_back(a);
-                aristas_temp.push_back(b);
-
-                if (Conectar_central == 0) {
-                    Arista c1 = new Arista(temp1, central, Longitud_cable, Ancho_banda);
-                    Arista c2 = new Arista(central, temp1, Longitud_cable, Ancho_banda);
-                    central.addArista(c1);
-                    temp1.addArista(c2);
-
-                    Conectar_central++;
-                }
-            } else {
-                JOptionPane.showMessageDialog(this, "Hubo un error al establecer la conexion",
-                        "ERROR", JOptionPane.ERROR_MESSAGE);
-            }
-        } else if (rb_cable_fibra.isSelected()) {
-            if (Ancho_banda > 0 && Ancho_banda <= 10000) {
-                Arista a = new Arista(temp1, temp2, Longitud_cable, Ancho_banda);
-                Arista b = new Arista(temp2, temp1, Longitud_cable, Ancho_banda);
-
-                temp1.addArista(b);
-                temp2.addArista(a);
-
-                aristas_temp.push_back(a);
-                aristas_temp.push_back(b);
-
-                if (Conectar_central == 0) {
-                    Arista c1 = new Arista(temp1, central, Longitud_cable, Ancho_banda);
-                    Arista c2 = new Arista(central, temp1, Longitud_cable, Ancho_banda);
-                    central.addArista(c1);
-                    temp1.addArista(c2);
-
-                    Conectar_central++;
-                }
-            } else {
-                JOptionPane.showMessageDialog(this, "Hubo un error al establecer la conexion",
-                        "ERROR", JOptionPane.ERROR_MESSAGE);
-            }
-        }
-
-        tf_ancho_banda.setText("");
-        tf_longitud_cable.setText("");
-        rb_cable_cobre.setSelected(true);
-    }//GEN-LAST:event_jButton3MouseClicked
 
     private void jmi_mapaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_mapaActionPerformed
         // TODO add your handling code here:
@@ -592,10 +427,10 @@ public class TOGO extends javax.swing.JFrame {
 
     private void jmi_modificar_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_modificar_eliminarActionPerformed
         // TODO add your handling code here:
-        jd_mapa.setModal(true);
-        jd_mapa.pack();
-        jd_mapa.setLocationRelativeTo(this);
-        jd_mapa.setVisible(true);
+        jd_modificar_eliminar_rc.setModal(true);
+        jd_modificar_eliminar_rc.pack();
+        jd_modificar_eliminar_rc.setLocationRelativeTo(this);
+        jd_modificar_eliminar_rc.setVisible(true);
     }//GEN-LAST:event_jmi_modificar_eliminarActionPerformed
 
     private void jmi_rActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_rActionPerformed
@@ -680,8 +515,7 @@ public class TOGO extends javax.swing.JFrame {
 
     private void jmi_mActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_mActionPerformed
         // TODO add your handling code here:
-        
-        
+
         long[][] matriz_temp = Red.AlgPrim(Red.generarMatrizAdyacencia());
         String matriz_vertices = "\n";
         for (int i = 0; i < matriz_temp.length; i++) {
@@ -694,14 +528,117 @@ public class TOGO extends javax.swing.JFrame {
             }
             matriz_vertices += "\n";
         }
-        
+
         jta_prim.setText(matriz_vertices);
-        
+
         jd_mapa_analisis3.setModal(true);
         jd_mapa_analisis3.pack();
         jd_mapa_analisis3.setLocationRelativeTo(this);
         jd_mapa_analisis3.setVisible(true);
     }//GEN-LAST:event_jmi_mActionPerformed
+
+    private void buttonTask1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonTask1MouseClicked
+        // TODO add your handling code here:
+        if (!tf_num_serie.getText().equals("")) {
+            String nombre = cb_tipo_router.getSelectedItem().toString();
+            int numero_serie = Integer.parseInt(tf_num_serie.getText());
+            Lista temp = new Lista();
+
+            Vertice v = new Vertice(nombre, temp, numero_serie);
+            Red.addVertice(v);
+            vertices_temp.push_back(v);
+
+            cb_vertices1.addItem(v);
+            cb_vertices2.addItem(v);
+            cb_routers_modificar.addItem(v);
+        } else if (Nombre_tecnico.equals("") && tf_num_serie.getText().equals("")) {
+            Nombre_tecnico = JOptionPane.showInputDialog("Escribe tu nombre porfavor");
+        }
+
+        if (tf_num_serie.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Estimado " + Nombre_tecnico + " trataste de instalar un router sin numero de serie " + "\n"
+                    + "se mandara un reporte de tu falla a la oficina central de TOGO" + "\n"
+                    + "¡sonrie, tienes TOGO!",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+
+        tf_num_serie.setText("");
+    }//GEN-LAST:event_buttonTask1MouseClicked
+
+    private void buttonTask2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonTask2MouseClicked
+        // TODO add your handling code here:
+        Vertice temp1 = ((Vertice) cb_vertices1.getSelectedItem());
+        Vertice temp2 = ((Vertice) cb_vertices2.getSelectedItem());
+
+        if (temp1.equals(temp2) && Nombre_tecnico.equals("")) {
+            Nombre_tecnico = JOptionPane.showInputDialog("Escribe tu nombre porfavor");
+        } else if ((!temp1.equals(temp2))) {
+            int Ancho_banda = Integer.parseInt(tf_ancho_banda.getText());
+            int Longitud_cable = Integer.parseInt(tf_longitud_cable.getText());
+
+            if (rb_cable_cobre.isSelected()) {
+                if (Ancho_banda > 0 && Ancho_banda <= 100) {
+                    Arista a = new Arista(temp1, temp2, Longitud_cable, Ancho_banda);
+                    Arista b = new Arista(temp2, temp1, Longitud_cable, Ancho_banda);
+
+                    temp1.addArista(b);
+                    temp2.addArista(a);
+
+                    aristas_temp.push_back(a);
+                    aristas_temp.push_back(b);
+
+                    if (Conectar_central == 0) {
+                        Arista c1 = new Arista(temp1, central, Longitud_cable, Ancho_banda);
+                        Arista c2 = new Arista(central, temp1, Longitud_cable, Ancho_banda);
+                        central.addArista(c1);
+                        temp1.addArista(c2);
+
+                        Conectar_central++;
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "Hubo un error al establecer la conexion",
+                            "ERROR", JOptionPane.ERROR_MESSAGE);
+                }
+            } else if (rb_cable_fibra.isSelected()) {
+                if (Ancho_banda > 0 && Ancho_banda <= 10000) {
+                    Arista a = new Arista(temp1, temp2, Longitud_cable, Ancho_banda);
+                    Arista b = new Arista(temp2, temp1, Longitud_cable, Ancho_banda);
+
+                    temp1.addArista(b);
+                    temp2.addArista(a);
+
+                    aristas_temp.push_back(a);
+                    aristas_temp.push_back(b);
+
+                    if (Conectar_central == 0) {
+                        Arista c1 = new Arista(temp1, central, Longitud_cable, Ancho_banda);
+                        Arista c2 = new Arista(central, temp1, Longitud_cable, Ancho_banda);
+                        central.addArista(c1);
+                        temp1.addArista(c2);
+
+                        Conectar_central++;
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "Hubo un error al establecer la conexion",
+                            "ERROR", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+
+            tf_ancho_banda.setText("");
+            tf_longitud_cable.setText("");
+            rb_cable_cobre.setSelected(true);
+        }
+
+        if (temp1.equals(temp2) && !Nombre_tecnico.equals("")) {
+            JOptionPane.showMessageDialog(this, "Estimado " + Nombre_tecnico
+                    + " un router no puede ser conectado a si mismo, "
+                    + "se te asiganara otro tecnico de ayuda" + "\n"
+                    + "¡sonrie, tienes TOGO!",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+
+
+    }//GEN-LAST:event_buttonTask2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -867,23 +804,26 @@ public class TOGO extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
+    private org.edisoncor.gui.button.ButtonTask buttonTask1;
+    private org.edisoncor.gui.button.ButtonTask buttonTask2;
     private javax.swing.JComboBox cb_routers_modificar;
     private javax.swing.JComboBox cb_tipo_r_modificar;
     private javax.swing.JComboBox cb_tipo_router;
     private javax.swing.JComboBox cb_vertices1;
     private javax.swing.JComboBox cb_vertices2;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -922,6 +862,7 @@ public class TOGO extends javax.swing.JFrame {
     Lista RRecorridos = new Lista();
     Vertice central = new Vertice("Router Central", aristas_centrales, 1);
     int Conectar_central = 0;
+    String Nombre_tecnico = "";
 
     int y = 0;
     int x = 0;
