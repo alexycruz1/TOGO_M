@@ -15,6 +15,8 @@ public class Vertice {
     private String nombre;
     private int numero_serie;
     private Lista aristas = new Lista();
+    private int x;
+    private int y;
 
     public Vertice(String nombre, Lista aristas,int numero_serie) {
         this.nombre = nombre;
@@ -63,6 +65,22 @@ public class Vertice {
         } else {
             return false;
         }
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
     }
 
     public void print() {

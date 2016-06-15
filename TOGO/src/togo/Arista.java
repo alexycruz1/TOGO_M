@@ -11,11 +11,13 @@ package togo;
  */
 public class Arista {
     private Vertice destino;
+    private Vertice inicio;
     private int Longitud;
     private int banda;  
 
-    public Arista(Vertice destino, int Longitud, int banda) {
+    public Arista(Vertice destino, Vertice inicio, int Longitud, int banda) {
         this.destino = destino;
+        this.inicio = inicio;
         this.Longitud = Longitud;
         this.banda = banda;
     }
@@ -47,8 +49,16 @@ public class Arista {
         this.banda = banda;
     }
 
+    public Vertice getInicio() {
+        return inicio;
+    }
+
+    public void setInicio(Vertice inicio) {
+        this.inicio = inicio;
+    }
+
     @Override
     public String toString() {
-        return "Destino: " + destino + ", peso: " + Longitud;
+        return "Destino: " + destino + ", peso: " + Longitud + " Inicio: " + inicio;
     }
 }

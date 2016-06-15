@@ -80,7 +80,7 @@ public class Lista {
         temp.setNext(lista.first());
     }
 
-    public Object find(Object value) {
+    public int find(Object value) {
         Node temp = head;
         int cont = 0;
         boolean esta = false;
@@ -96,9 +96,9 @@ public class Lista {
         }
 
         if (esta) {
-            return cont - 1;
+            return 1;
         } else {
-            return -1;
+            return 0;
         }
     }
 
