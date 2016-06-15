@@ -19,7 +19,7 @@ public class Vertice {
     private int y;
 
     public Vertice(String nombre, Lista aristas,int numero_serie) {
-        this.nombre = nombre;
+        this.nombre = nombre + " " + (Integer.toString(numero_serie));
         this.aristas = aristas;
         this.numero_serie = numero_serie;
     }
@@ -93,6 +93,6 @@ public class Vertice {
 
     @Override
     public String toString() {
-        return numero_serie + " " + nombre;
+        return nombre;
     }
 }

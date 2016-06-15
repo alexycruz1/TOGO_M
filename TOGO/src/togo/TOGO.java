@@ -26,7 +26,7 @@ public class TOGO extends javax.swing.JFrame {
         //this.setExtendedState(MAXIMIZED_BOTH);
         Red = new Grafo();
         Red.addVertice(central);
-        
+
         Analisis = new Grafo();
     }
 
@@ -52,6 +52,9 @@ public class TOGO extends javax.swing.JFrame {
         jd_mapa_analisis1 = new javax.swing.JDialog();
         jp_mapa_analisis1 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
+        jd_mapa_analisis2 = new javax.swing.JDialog();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jta_floyd = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -208,6 +211,27 @@ public class TOGO extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jta_floyd.setColumns(20);
+        jta_floyd.setRows(5);
+        jScrollPane1.setViewportView(jta_floyd);
+
+        javax.swing.GroupLayout jd_mapa_analisis2Layout = new javax.swing.GroupLayout(jd_mapa_analisis2.getContentPane());
+        jd_mapa_analisis2.getContentPane().setLayout(jd_mapa_analisis2Layout);
+        jd_mapa_analisis2Layout.setHorizontalGroup(
+            jd_mapa_analisis2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_mapa_analisis2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jd_mapa_analisis2Layout.setVerticalGroup(
+            jd_mapa_analisis2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_mapa_analisis2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jButton1.setText("PRUEBAS");
@@ -289,6 +313,11 @@ public class TOGO extends javax.swing.JFrame {
         jmi_p.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
         jmi_p.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ancho_banda.gif"))); // NOI18N
         jmi_p.setText("Probar ancho de banda");
+        jmi_p.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_pActionPerformed(evt);
+            }
+        });
         jm_analisis.add(jmi_p);
 
         jmi_m.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_MASK));
@@ -434,19 +463,19 @@ public class TOGO extends javax.swing.JFrame {
             if (Ancho_banda > 0 && Ancho_banda <= 100) {
                 Arista a = new Arista(temp1, temp2, Longitud_cable, Ancho_banda);
                 Arista b = new Arista(temp2, temp1, Longitud_cable, Ancho_banda);
-                
+
                 temp1.addArista(b);
                 temp2.addArista(a);
 
                 aristas_temp.push_back(a);
                 aristas_temp.push_back(b);
-                
+
                 if (Conectar_central == 0) {
                     Arista c1 = new Arista(temp1, central, Longitud_cable, Ancho_banda);
                     Arista c2 = new Arista(central, temp1, Longitud_cable, Ancho_banda);
                     central.addArista(c1);
                     temp1.addArista(c2);
-                    
+
                     Conectar_central++;
                 }
             } else {
@@ -463,13 +492,13 @@ public class TOGO extends javax.swing.JFrame {
 
                 aristas_temp.push_back(a);
                 aristas_temp.push_back(b);
-                
+
                 if (Conectar_central == 0) {
                     Arista c1 = new Arista(temp1, central, Longitud_cable, Ancho_banda);
                     Arista c2 = new Arista(central, temp1, Longitud_cable, Ancho_banda);
                     central.addArista(c1);
                     temp1.addArista(c2);
-                    
+
                     Conectar_central++;
                 }
             } else {
@@ -486,7 +515,7 @@ public class TOGO extends javax.swing.JFrame {
     private void jmi_mapaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_mapaActionPerformed
         // TODO add your handling code here:
         DibujarGrafo(Red);
-        
+
         jd_mapa.setModal(true);
         jd_mapa.pack();
         jd_mapa.setLocationRelativeTo(this);
@@ -553,31 +582,31 @@ public class TOGO extends javax.swing.JFrame {
                 CaminoMinimo resultado = new CaminoMinimo("");
                 for (int i = 0; i < Recorridos.size(); i++) {
                     if (resultado.getCoste() > ((CaminoMinimo) Recorridos.at(i)).getCoste() || resultado.getCoste() == -1) {
-                        resultado = (CaminoMinimo)Recorridos.at(i);
+                        resultado = (CaminoMinimo) Recorridos.at(i);
                     }
                 }
 
                 String m[] = resultado.ToString();
                 jTextField1.setText(m[0] + m[1]);
                 RRecorridos.push_back(resultado);
-                
+
                 for (int i = 0; i < resultado.getNombres().size(); i++) {
                     nombres.push_back(resultado.getNombres().at(i));
                 }
             }
         }
-        
+
         for (int i = 0; i < Red.getVertices().size(); i++) {
             for (int j = 0; j < nombres.size(); j++) {
-                if (nombres.at(j).toString().equals(((Vertice)Red.getVertices().at(i)).getNombre())) {
+                if (nombres.at(j).toString().equals(((Vertice) Red.getVertices().at(i)).getNombre())) {
                     Analisis.addVertice((Vertice) Red.getVertices().at(i));
                 }
             }
         }
-        
+
         Analisis.print();
         DibujarGrafoTemporal(Analisis, jp_mapa_analisis1);
-        
+
         jd_mapa_analisis1.setModal(true);
         jd_mapa_analisis1.pack();
         jd_mapa_analisis1.setLocationRelativeTo(this);
@@ -596,6 +625,32 @@ public class TOGO extends javax.swing.JFrame {
             Analisis.deleteVertice(i);
         }
     }//GEN-LAST:event_jd_mapa_analisis1WindowClosed
+
+    private void jmi_pActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_pActionPerformed
+        // TODO add your handling code here:
+
+        String Floyd = Red.floyd(Red.generarMatrizAdyacencia());
+
+        Object[][] matriz_temp = Red.getMatriz_vertices();
+        String matriz_vertices = "\n";
+        for (int i = 0; i < matriz_temp.length; i++) {
+            for (int j = 0; j < matriz_temp.length; j++) {
+                if (matriz_temp[i][j] == null) {
+                    matriz_vertices += "[NULL]";
+                } else {
+                    matriz_vertices += "[" + ((Vertice) matriz_temp[i][j]).getNombre() + "] ";
+                }
+            }
+            matriz_vertices += "\n";
+        }
+
+        jta_floyd.setText(Floyd + matriz_vertices);
+
+        jd_mapa_analisis2.setModal(true);
+        jd_mapa_analisis2.pack();
+        jd_mapa_analisis2.setLocationRelativeTo(this);
+        jd_mapa_analisis2.setVisible(true);
+    }//GEN-LAST:event_jmi_pActionPerformed
 
     /**
      * @param args the command line arguments
@@ -635,7 +690,7 @@ public class TOGO extends javax.swing.JFrame {
     public void BuscarNodo(CaminoMinimo recibir, String destino) {
         CaminoMinimo clon = recibir.clonar();
         recibir.delete();
-        
+
         Vertice temp = null;
 
         for (int i = 0; i < Red.getVertices().size(); i++) {
@@ -663,10 +718,10 @@ public class TOGO extends javax.swing.JFrame {
         }
 
     }
-    
-    public void DibujarGrafo(Grafo grafo){
+
+    public void DibujarGrafo(Grafo grafo) {
         Object Parent = graph.getDefaultParent();
-        cmp.setPreferredSize(new Dimension(1100, 300));
+        cmp.setPreferredSize(new Dimension(800, 300));
         graph.getModel().beginUpdate();
         Lista temp2 = new Lista();
         Lista temp = new Lista();
@@ -682,23 +737,23 @@ public class TOGO extends javax.swing.JFrame {
                     y = 0;
                 }
             }
-            temp2.push_back(graph.insertVertex(Parent, null, ((Vertice)Red.getVertices().at(i)).getNombre(), 70 * i, y, 50, 50));
-            temp.push_back((Vertice)Red.getVertices().at(i));
+            temp2.push_back(graph.insertVertex(Parent, null, ((Vertice) Red.getVertices().at(i)).getNombre(), 70 * i, y, 50, 50));
+            temp.push_back((Vertice) Red.getVertices().at(i));
         }
         Object Origen = null, Destino = null;
         for (int i = 0; i < grafo.getVertices().size(); i++) {
             try {
-                for (int j = 0; j < ((Vertice)grafo.getVertices().at(i)).getAristas().size(); j++) {
-                    int peso = ((Arista)((Vertice)grafo.getVertices().at(i)).getAristas().at(j)).getBanda();
-                    String Nombre1 = ((Arista)((Vertice)Red.getVertices().at(i)).getAristas().at(j)).getInicio().getNombre();
-                    String Nombre2 = ((Arista)((Vertice)Red.getVertices().at(i)).getAristas().at(j)).getDestino().getNombre();
+                for (int j = 0; j < ((Vertice) grafo.getVertices().at(i)).getAristas().size(); j++) {
+                    int peso = ((Arista) ((Vertice) grafo.getVertices().at(i)).getAristas().at(j)).getBanda();
+                    String Nombre1 = ((Arista) ((Vertice) Red.getVertices().at(i)).getAristas().at(j)).getInicio().getNombre();
+                    String Nombre2 = ((Arista) ((Vertice) Red.getVertices().at(i)).getAristas().at(j)).getDestino().getNombre();
                     for (int k = 0; k < temp.size(); k++) {
-                        if (Nombre1.equals(((Vertice)temp.at(k)).getNombre())) {
-                            Origen = (Object)temp2.at(k);
+                        if (Nombre1.equals(((Vertice) temp.at(k)).getNombre())) {
+                            Origen = (Object) temp2.at(k);
                         }
-                        
-                        if (Nombre2.equals(((Vertice)temp.at(k)).getNombre())) {
-                            Destino = (Object)temp2.at(k);
+
+                        if (Nombre2.equals(((Vertice) temp.at(k)).getNombre())) {
+                            Destino = (Object) temp2.at(k);
                         }
                     }
                     graph.insertEdge(Parent, null, peso, Origen, Destino);
@@ -710,10 +765,10 @@ public class TOGO extends javax.swing.JFrame {
         jp_mapa.add(cmp);
         jp_mapa.setLayout(new FlowLayout());
     }
-    
-    public void DibujarGrafoTemporal(Grafo grafo, JPanel panel){
+
+    public void DibujarGrafoTemporal(Grafo grafo, JPanel panel) {
         Object Parent = graph_temp.getDefaultParent();
-        cmp_temp.setPreferredSize(new Dimension(1100, 300));
+        cmp_temp.setPreferredSize(new Dimension(800, 300));
         graph_temp.getModel().beginUpdate();
         Lista temp2 = new Lista();
         Lista temp = new Lista();
@@ -729,23 +784,23 @@ public class TOGO extends javax.swing.JFrame {
                     y = 0;
                 }
             }
-            temp2.push_back(graph_temp.insertVertex(Parent, null, ((Vertice)Analisis.getVertices().at(i)).getNombre(), 70 * i, y, 50, 50));
-            temp.push_back((Vertice)Analisis.getVertices().at(i));
+            temp2.push_back(graph_temp.insertVertex(Parent, null, ((Vertice) Analisis.getVertices().at(i)).getNombre(), 70 * i, y, 50, 50));
+            temp.push_back((Vertice) Analisis.getVertices().at(i));
         }
         Object Origen = null, Destino = null;
         for (int i = 0; i < grafo.getVertices().size(); i++) {
             try {
-                for (int j = 0; j < ((Vertice)grafo.getVertices().at(i)).getAristas().size(); j++) {
-                    int peso = ((Arista)((Vertice)grafo.getVertices().at(i)).getAristas().at(j)).getBanda();
-                    String Nombre1 = ((Arista)((Vertice)Analisis.getVertices().at(i)).getAristas().at(j)).getInicio().getNombre();
-                    String Nombre2 = ((Arista)((Vertice)Analisis.getVertices().at(i)).getAristas().at(j)).getDestino().getNombre();
+                for (int j = 0; j < ((Vertice) grafo.getVertices().at(i)).getAristas().size(); j++) {
+                    int peso = ((Arista) ((Vertice) grafo.getVertices().at(i)).getAristas().at(j)).getBanda();
+                    String Nombre1 = ((Arista) ((Vertice) Analisis.getVertices().at(i)).getAristas().at(j)).getInicio().getNombre();
+                    String Nombre2 = ((Arista) ((Vertice) Analisis.getVertices().at(i)).getAristas().at(j)).getDestino().getNombre();
                     for (int k = 0; k < temp.size(); k++) {
-                        if (Nombre1.equals(((Vertice)temp.at(k)).getNombre())) {
-                            Origen = (Object)temp2.at(k);
+                        if (Nombre1.equals(((Vertice) temp.at(k)).getNombre())) {
+                            Origen = (Object) temp2.at(k);
                         }
-                        
-                        if (Nombre2.equals(((Vertice)temp.at(k)).getNombre())) {
-                            Destino = (Object)temp2.at(k);
+
+                        if (Nombre2.equals(((Vertice) temp.at(k)).getNombre())) {
+                            Destino = (Object) temp2.at(k);
                         }
                     }
                     graph_temp.insertEdge(Parent, null, peso, Origen, Destino);
@@ -779,10 +834,12 @@ public class TOGO extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JDialog jd_mapa;
     private javax.swing.JDialog jd_mapa_analisis1;
+    private javax.swing.JDialog jd_mapa_analisis2;
     private javax.swing.JDialog jd_modificar_eliminar_rc;
     private javax.swing.JMenu jm_analisis;
     private javax.swing.JMenu jm_archivo;
@@ -793,6 +850,7 @@ public class TOGO extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmi_r;
     private javax.swing.JPanel jp_mapa;
     private javax.swing.JPanel jp_mapa_analisis1;
+    private javax.swing.JTextArea jta_floyd;
     private javax.swing.JRadioButton rb_cable_cobre;
     private javax.swing.JRadioButton rb_cable_fibra;
     private javax.swing.JTextField tf_ancho_banda;
@@ -802,7 +860,7 @@ public class TOGO extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     Grafo Red;
     Grafo Analisis;
-    
+
     Lista aristas_temp = new Lista();
     Lista vertices_temp = new Lista();
     Lista aristas_centrales = new Lista();
@@ -816,7 +874,7 @@ public class TOGO extends javax.swing.JFrame {
 
     mxGraph graph = new mxGraph();
     mxGraphComponent cmp = new mxGraphComponent(graph);
-    
+
     mxGraph graph_temp = new mxGraph();
     mxGraphComponent cmp_temp = new mxGraphComponent(graph_temp);
 }
